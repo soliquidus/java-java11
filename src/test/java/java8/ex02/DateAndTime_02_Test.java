@@ -42,7 +42,7 @@ public class DateAndTime_02_Test {
 
         // TODO créer un objet LocalDate à la date 10/01/1990
         // TODO utiliser la méthode parse
-        LocalDate result = LocalDate.of(1990, 1, 10);
+        LocalDate result = LocalDate.parse("1990-01-10");
 
         // TODO En exploitant les méthodes de l'objet result, valoriser les
         // différentes variables afin de rendre le test passant.

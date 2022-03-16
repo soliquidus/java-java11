@@ -55,8 +55,7 @@ public class DateAndTime_03_Test {
         LocalTime localTime = LocalTime.of(12, 0, 0);
 
         // TODO Formatter l'heure pour que le test soit passant
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        String result = null;
+        String result = localTime.format(DateTimeFormatter.ofPattern("HH:mm"));
 
         assertThat(result, is("12:00"));
     }
