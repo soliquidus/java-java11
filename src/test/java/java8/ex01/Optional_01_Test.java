@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import org.junit.Test;
 
@@ -27,8 +28,9 @@ public class Optional_01_Test {
     	List<Person> persons = Data.buildPersonList(100);
 
         // TODO rechercher dans la liste ci-dessus la 1ère personne ayant 18 ans
+        Predicate<Person> ageMin = p -> p.getAge() >= 18;
         // TODO utiliser la méthode "findFirst"
-        Optional<Person> optPerson = null;
+        Optional<Person> optPerson = persons.stream().filter(ageMin).findFirst();
         assertThat(optPerson.isPresent(), is(true));
         
         // TODO afficher la personne en question si l'optional contient une personne
@@ -40,11 +42,11 @@ public class Optional_01_Test {
 
         // TODO rechercher dans la liste ci-dessus la 1ère personne ayant 75 ans
         // TODO utiliser la méthode "findFirst"
-        Optional<Person> optPerson = null;
+        Optional<Person> optPerson = persons.stream().filter(p -> p.getAge() == 75).findFirst();
         assertThat(optPerson.isPresent(), is(false));
         
         // TODO si la personne n'existe pas, jeter une exception NotPresentException
         // TODO utiliser la méthode "orElseThrow"
-
+        persons.stream().filter(p -> p.getAge() == 75).findFirst().orElseThrow(NotPresentException::new);
     }
 }
